@@ -57,12 +57,12 @@ class CandigAuthzMiddleware:
 
     def get_opa_token_from_request(self, headers):
         """
-        Extracts token from request's header X-CANDIG-LOCAL-OIDC
+        Extracts token from request's header Authorization
         """
-        token = headers.get("X-CANDIG-LOCAL-OIDC")
+        token = headers.get('Authorization').split()[1]
         if token == None:
             return ""
-        return token.strip('"')
+        return token
 
     def get_request_body(self, token, path, method):
         """
@@ -86,8 +86,7 @@ class CandigAuthzMiddleware:
             response = requests.post(settings.CANDIG_OPA_URL +
                                          "/v1/data/permissions/datasets",
                                          headers={"Authorization": f"Bearer {settings.CANDIG_OPA_SECRET}"},
-                                         json=self.get_request_body(token, path, method),
-                                         verify=settings.CANDIG_ROOT_CA)
+                                         json=self.get_request_body(token, path, method))
             response.raise_for_status()
         except requests.exceptions.RequestException:
             error_response = {
