@@ -5,7 +5,7 @@ import re
 import json
 
 
-class CandigAuthzMiddleware:
+class DatasetsAuthzMiddleware:
     """
     A generic middleware for dataset-level authorization.
     """

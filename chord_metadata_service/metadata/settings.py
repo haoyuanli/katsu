@@ -114,7 +114,7 @@ MIDDLEWARE = [
     'bento_lib.auth.django_remote_user.BentoRemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'chord_metadata_service.restapi.middleware.CandigAuthzMiddleware',
+    'chord_metadata_service.restapi.datasets_authz_middleware.DatasetsAuthzMiddleware',
 ]
 
 CORS_ALLOWED_ORIGINS = []
