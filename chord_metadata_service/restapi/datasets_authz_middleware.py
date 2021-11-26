@@ -63,7 +63,7 @@ class DatasetsAuthzMiddleware:
         Extracts token from request's header Authorization
         """
         token = headers.get('Authorization').split()[1]
-        if token == None:
+        if token is None:
             return ""
         return token
 
@@ -86,10 +86,11 @@ class DatasetsAuthzMiddleware:
         Get allowed dataset result from OPA
         """
         try:
-            response = requests.post(settings.CANDIG_OPA_URL +
-                                         "/v1/data/permissions/datasets",
-                                         headers={"Authorization": f"Bearer {settings.CANDIG_OPA_SECRET}"},
-                                         json=self.get_request_body(token, path, method))
+            response = requests.post(
+                settings.CANDIG_OPA_URL + "/v1/data/permissions/datasets",
+                headers={"Authorization": f"Bearer {settings.CANDIG_OPA_SECRET}"},
+                json=self.get_request_body(token, path, method)
+            )
             response.raise_for_status()
         except requests.exceptions.RequestException:
             error_response = {
