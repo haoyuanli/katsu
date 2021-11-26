@@ -13,10 +13,13 @@ class DatasetsAuthzMiddleware:
         self.get_response = get_response
         self.authorize_datasets = 'NO_DATASETS_AUTHORIZED'
         self.authorized_paths = [
-            "^/api/phenopackets/?.*", "^/api/datasets/?.*", "^/api/diagnoses/?.*", "^/api/diseases/?.*",
+            "^/api/phenopackets/?.*", "^/api/diagnoses/?.*", "^/api/diseases/?.*",
             "^/api/genes/?.*", "^/api/genomicinterpretations/?.*", "^/api/htsfiles/?.*", "^/api/individuals/?.*",
-            "^/api/interpretations/?.*", "^/api/metadata/?.*", "^/api/phenopackets/?.*", "^/api/phenotypicfeatures/?.*", 
-            "^/api/procedures/?.*", "^/api/variants/?.*", "^/api/biosamples/?.*"]
+            "^/api/interpretations/?.*", "^/api/metadata/?.*", "^/api/phenopackets/?.*", "^/api/phenotypicfeatures/?.*",
+            "^/api/procedures/?.*", "^/api/variants/?.*", "^/api/biosamples/?.*",
+            "^/api/mcodepackets/?.*", "^/api/medicationstatements/?.*",  "^/api/geneticspecimens/?.*" ,
+            "^/api/cancergeneticvariants/?.*" ,"^/api/genomicregionsstudied/?.*" ,"^/api/genomicsreports/?.*" ,"^/api/labsvital/?.*" ,
+            "^/api/cancerconditions/?.*" ,"^/api/tnmstaging/?.*" ,"^/api/cancerrelatedprocedures/?.*"]
 
     def __call__(self, request):
         """
@@ -29,7 +32,7 @@ class DatasetsAuthzMiddleware:
         For example, if datasets d100 and d200 are authorized, you should set
         self.authorize_datasets = 'd100,d200'
         """
-        
+
         if settings.CANDIG_AUTHORIZATION == 'OPA' and request.method == 'GET'\
             and any(re.match(path_re, request.path) for path_re in self.authorized_paths):
             if settings.CACHE_TIME != 0:
@@ -44,11 +47,11 @@ class DatasetsAuthzMiddleware:
             opa_res_datasets = self.get_opa_res(token, request.path, request.method)
             if len(opa_res_datasets) == 0:
                 self.authorize_datasets = 'NO_DATASETS_AUTHORIZED'
-            elif type(opa_res_datasets) == tuple and opa_res_datasets[0] == "error": # error response
+            elif type(opa_res_datasets) == tuple and opa_res_datasets[0] == "error": #  error response
                 return opa_res_datasets[1]
             else:
                 self.authorize_datasets = ",".join(opa_res_datasets)
-            request.GET = request.GET.copy() # Make request.GET mutable
+            request.GET = request.GET.copy() #  Make request.GET mutable
             request.GET.update({'authorized_datasets': self.authorize_datasets})
             response = self.get_response(request)
             return response
@@ -101,4 +104,3 @@ class DatasetsAuthzMiddleware:
         allowed_datasets = response.json()["result"]
 
         return allowed_datasets
-
