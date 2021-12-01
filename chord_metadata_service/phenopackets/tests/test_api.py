@@ -1,6 +1,5 @@
 import uuid
 import os
-import json
 from rest_framework import status
 from rest_framework.test import APITestCase
 from . import constants as c
@@ -315,7 +314,6 @@ class GetPhenopacketsApiTest(APITestCase):
                                         project=p)
         self.d2 = Dataset.objects.create(title="dataset_2", description="Some dataset", data_use=VALID_DATA_USE_1,
                                          project=p)
-        # TODO: Real service ID
         to = TableOwnership.objects.create(table_id=uuid.uuid4(), service_id=uuid.uuid4(), service_artifact="metadata",
                                            dataset=self.d)
         to2 = TableOwnership.objects.create(table_id=uuid.uuid4(), service_id=uuid.uuid4(), service_artifact="metadata",
@@ -330,7 +328,7 @@ class GetPhenopacketsApiTest(APITestCase):
 
     def test_get_phenopackets(self):
         """
-        Test that we can get a 2 phenopackets without a dataset title
+        Test that we can get 2 phenopackets without a dataset title
         """
         response = self.client.get('/api/phenopackets')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
