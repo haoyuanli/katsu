@@ -1,11 +1,13 @@
-import uuid, os, json
+import uuid
+import os
+import json
 from rest_framework import status
 from rest_framework.test import APITestCase
 from . import constants as c
 from .. import models as m, serializers as s
 
 from chord_metadata_service.restapi.tests.utils import get_response
-from chord_metadata_service.chord.data_types import DATA_TYPE_PHENOPACKET, DATA_TYPE_MCODEPACKET
+from chord_metadata_service.chord.data_types import DATA_TYPE_PHENOPACKET
 from chord_metadata_service.chord.models import Project, Dataset, TableOwnership, Table
 # noinspection PyProtectedMember
 from chord_metadata_service.chord.ingest import (
@@ -286,7 +288,7 @@ class CreateInterpretationTest(APITestCase):
         self.phenopacket = m.Phenopacket.objects.create(**c.valid_phenopacket(
             subject=self.individual,
             meta_data=self.metadata)
-            ).id
+        ).id
         self.metadata_interpretation = m.MetaData.objects.create(**c.VALID_META_DATA_2).id
         self.disease = m.Disease.objects.create(**c.VALID_DISEASE_1)
         self.diagnosis = m.Diagnosis.objects.create(**c.valid_diagnosis(self.disease)).id
@@ -313,17 +315,19 @@ class GetPhenopacketsApiTest(APITestCase):
         self.d = Dataset.objects.create(title="dataset_1", description="Some dataset", data_use=VALID_DATA_USE_1,
                                         project=p)
         self.d2 = Dataset.objects.create(title="dataset_2", description="Some dataset", data_use=VALID_DATA_USE_1,
-                                        project=p)
+                                         project=p)
         # TODO: Real service ID
         to = TableOwnership.objects.create(table_id=uuid.uuid4(), service_id=uuid.uuid4(), service_artifact="metadata",
                                            dataset=self.d)
         to2 = TableOwnership.objects.create(table_id=uuid.uuid4(), service_id=uuid.uuid4(), service_artifact="metadata",
-                                           dataset=self.d2)
+                                            dataset=self.d2)
         self.t = Table.objects.create(ownership_record=to, name="Table 1", data_type=DATA_TYPE_PHENOPACKET)
         self.t2 = Table.objects.create(ownership_record=to2, name="Table 2", data_type=DATA_TYPE_PHENOPACKET)
 
-        WORKFLOW_INGEST_FUNCTION_MAP[WORKFLOW_PHENOPACKETS_JSON](EXAMPLE_INGEST_OUTPUTS_PHENOPACKETS_JSON_1, self.t.identifier)
-        WORKFLOW_INGEST_FUNCTION_MAP[WORKFLOW_PHENOPACKETS_JSON](EXAMPLE_INGEST_OUTPUTS_PHENOPACKETS_JSON_2, self.t2.identifier)
+        WORKFLOW_INGEST_FUNCTION_MAP[WORKFLOW_PHENOPACKETS_JSON](
+            c.valid_phenopacket, self.t.identifier)
+        WORKFLOW_INGEST_FUNCTION_MAP[WORKFLOW_PHENOPACKETS_JSON](
+            c.valid_phenopacket, self.t2.identifier)
 
     def test_get_phenopackets(self):
         """

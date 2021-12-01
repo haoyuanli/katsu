@@ -5,7 +5,7 @@ import json
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from chord_metadata_service.chord.data_types import DATA_TYPE_PHENOPACKET, DATA_TYPE_MCODEPACKET
+from chord_metadata_service.chord.data_types import DATA_TYPE_MCODEPACKET
 from chord_metadata_service.chord.models import Project, Dataset, TableOwnership, Table
 # noinspection PyProtectedMember
 from chord_metadata_service.chord.ingest import (
