@@ -10,5 +10,9 @@
         "extra_properties": {
             "education": "Bachelor's Degree"
         }
+    },
+    "meta_data": {
+        "created_by": "David Lougheed",
+        "submitted_by": "David Lougheed"
     }
 }
