@@ -21,7 +21,7 @@ EXAMPLE_INGEST_OUTPUTS_MCODE_JSON = {
 
 class GetMcodeApiTest(APITestCase):
     """
-    Test that we can retrieve mcodepackets with or without dataset title.
+    Test that we can retrieve mcodepackets with valid dataset titles or without dataset title.
     """
 
     def setUp(self) -> None:
