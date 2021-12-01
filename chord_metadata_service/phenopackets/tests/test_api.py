@@ -304,6 +304,9 @@ class CreateInterpretationTest(APITestCase):
 
 
 class GetPhenopacketsApiTest(APITestCase):
+    """
+    Test that we can retrieve phenopackets with valid dataset titles or without dataset title.
+    """
 
     def setUp(self) -> None:
         """
