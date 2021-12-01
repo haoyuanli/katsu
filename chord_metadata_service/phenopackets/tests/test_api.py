@@ -322,13 +322,6 @@ class GetPhenopacketsApiTest(APITestCase):
                                             dataset=self.d2)
         self.t = Table.objects.create(ownership_record=to, name="Table 1", data_type=DATA_TYPE_PHENOPACKET)
         self.t2 = Table.objects.create(ownership_record=to2, name="Table 2", data_type=DATA_TYPE_PHENOPACKET)
-        # individual = m.Individual.objects.create(**c.VALID_INDIVIDUAL_1)
-        # self.subject = individual.id
-        # meta = m.MetaData.objects.create(**c.VALID_META_DATA_2)
-        # self.metadata = meta.id
-        # self.phenopacket = c.valid_phenopacket(
-        #     subject=self.subject,
-        #     meta_data=self.metadata)
 
         WORKFLOW_INGEST_FUNCTION_MAP[WORKFLOW_PHENOPACKETS_JSON](
             EXAMPLE_INGEST_OUTPUTS_PHENOPACKETS_JSON_1, self.t.identifier)
