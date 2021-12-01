@@ -356,7 +356,7 @@ class GetPhenopacketsApiTest(APITestCase):
         """
         Test that we can get 3 phenopacket under both dataset_1 and dataset_2
         """
-        response = self.client.get('/api/phenopackets?datasets=dataset_2')
+        response = self.client.get('/api/phenopackets?datasets=dataset_1,dataset_2')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
         self.assertEqual(len(response_data["results"]), 3)
