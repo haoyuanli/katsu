@@ -327,12 +327,12 @@ class GetPhenopacketsApiTest(APITestCase):
 
     def test_get_phenopackets(self):
         """
-        Test that we can get a list of phenopackets without a dataset title
+        Test that we can get a 2 phenopackets without a dataset title
         """
         response = self.client.get('/api/phenopackets')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
-        self.assertEqual(len(response_data["results"]), 3)
+        self.assertEqual(len(response_data["results"]), 2)
 
     def test_get_phenopackets_with_valid_dataset(self):
         """
@@ -345,21 +345,21 @@ class GetPhenopacketsApiTest(APITestCase):
 
     def test_get_phenopackets_with_valid_dataset_2(self):
         """
-        Test that we can get 2 phenopacket under dataset_2
+        Test that we can get 1 phenopacket under dataset_2
         """
         response = self.client.get('/api/phenopackets?datasets=dataset_2')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
-        self.assertEqual(len(response_data["results"]), 2)
+        self.assertEqual(len(response_data["results"]), 1)
 
     def test_get_phenopackets_with_valid_dataset_3(self):
         """
-        Test that we can get 3 phenopacket under both dataset_1 and dataset_2
+        Test that we can get 2 phenopacket under both dataset_1 and dataset_2
         """
         response = self.client.get('/api/phenopackets?datasets=dataset_1,dataset_2')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
-        self.assertEqual(len(response_data["results"]), 3)
+        self.assertEqual(len(response_data["results"]), 2)
 
     def test_get_phenopackets_with_invalid_dataset(self):
         """

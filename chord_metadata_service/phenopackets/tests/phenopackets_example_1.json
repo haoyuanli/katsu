@@ -1,83 +1,82 @@
-[
-    {
-        "subject": {
-            "id": "ind:NA19648",
-            "date_of_birth": "1991-08-01",
-            "sex": "FEMALE",
-            "karyotypic_sex": "XX",
-            "taxonomy": {
-                "id": "NCBITaxon:9606",
-                "label": "Homo sapiens"
+{
+    "id": "8670db4d-77ad-4bee-b38c-599453510c6a",
+    "subject": {
+        "id": "ind:NA19648",
+        "date_of_birth": "1991-08-01",
+        "sex": "FEMALE",
+        "karyotypic_sex": "XX",
+        "taxonomy": {
+            "id": "NCBITaxon:9606",
+            "label": "Homo sapiens"
+        }
+    },
+    "phenotypic_features": [],
+    "diseases": [
+        {
+            "term": {
+                "id": "NCIT:C4872",
+                "label": "Breast Carcinoma"
+            },
+            "onset": {
+                "age": "P28Y"
             }
-        },
-        "phenotypic_features": [],
-        "diseases": [
+        }
+    ],
+    "meta_data": {
+        "created_by": "David Lougheed",
+        "submitted_by": "Ksenia Zaytseva",
+        "resources": [
             {
-                "term": {
-                    "id": "NCIT:C4872",
-                    "label": "Breast Carcinoma"
-                },
-                "onset": {
-                    "age": "P28Y"
-                }
+                "id": "NCBITaxon:2018-07-27",
+                "name": "NCBI Taxonomy OBO Edition",
+                "namespace_prefix": "NCBITaxon",
+                "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
+                "version": "2018-07-27",
+                "iri_prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
+            },
+            {
+                "id": "UBERON:2019-06-27",
+                "name": "Uber-anatomy ontology",
+                "namespace_prefix": "UBERON",
+                "url": "http://purl.obolibrary.org/obo/uberon.owl",
+                "version": "2019-06-27",
+                "iri_prefix": "http://purl.obolibrary.org/obo/UBERON"
+            },
+            {
+                "id": "NCIT:2015-09-01",
+                "name": "NCI Thesaurus",
+                "namespace_prefix": "NCIT",
+                "url": "https://ncit.nci.nih.gov",
+                "version": "2015-09-01",
+                "iri_prefix": "https://ncit.nci.nih.gov"
             }
         ],
-        "meta_data": {
-            "created_by": "David Lougheed",
-            "submitted_by": "Ksenia Zaytseva",
-            "resources": [
-                {
-                    "id": "NCBITaxon:2018-07-27",
-                    "name": "NCBI Taxonomy OBO Edition",
-                    "namespace_prefix": "NCBITaxon",
-                    "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-                    "version": "2018-07-27",
-                    "iri_prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
-                },
-                {
-                    "id": "UBERON:2019-06-27",
-                    "name": "Uber-anatomy ontology",
-                    "namespace_prefix": "UBERON",
-                    "url": "http://purl.obolibrary.org/obo/uberon.owl",
-                    "version": "2019-06-27",
-                    "iri_prefix": "http://purl.obolibrary.org/obo/UBERON"
-                },
-                {
-                    "id": "NCIT:2015-09-01",
-                    "name": "NCI Thesaurus",
-                    "namespace_prefix": "NCIT",
-                    "url": "https://ncit.nci.nih.gov",
-                    "version": "2015-09-01",
-                    "iri_prefix": "https://ncit.nci.nih.gov"
+        "updates": [],
+        "external_references": []
+    },
+    "biosamples": [
+        {
+            "id": "NA19648",
+            "individual_id": "ind:NA19648",
+            "description": "Biosample for patient NA19648",
+            "sampled_tissue": {
+                "id": "UBERON:0000178",
+                "label": "blood"
+            },
+            "phenotypic_features": [],
+            "individual_age_at_collection": {
+                "age": "P28Y"
+            },
+            "histological_diagnosis": null,
+            "tumor_progression": null,
+            "diagnostic_markers": [],
+            "procedure": {
+                "code": {
+                    "id": "NCIT:C15189",
+                    "label": "Biopsy"
                 }
-            ],
-            "updates": [],
-            "external_references": []
-        },
-        "biosamples": [
-            {
-                "id": "NA19648",
-                "individual_id": "ind:NA19648",
-                "description": "Biosample for patient NA19648",
-                "sampled_tissue": {
-                    "id": "UBERON:0000178",
-                    "label": "blood"
-                },
-                "phenotypic_features": [],
-                "individual_age_at_collection": {
-                    "age": "P28Y"
-                },
-                "histological_diagnosis": null,
-                "tumor_progression": null,
-                "diagnostic_markers": [],
-                "procedure": {
-                    "code": {
-                        "id": "NCIT:C15189",
-                        "label": "Biopsy"
-                    }
-                },
-                "is_control_sample": false
-            }
-        ]
-    }
-]
+            },
+            "is_control_sample": false
+        }
+    ]
+}
