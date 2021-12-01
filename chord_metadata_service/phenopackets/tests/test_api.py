@@ -331,9 +331,9 @@ class GetPhenopacketsApiTest(APITestCase):
             meta_data=self.metadata)
 
         WORKFLOW_INGEST_FUNCTION_MAP[WORKFLOW_PHENOPACKETS_JSON](
-            self.phenopacket, self.t.identifier)
+            EXAMPLE_INGEST_OUTPUTS_PHENOPACKETS_JSON_1, self.t.identifier)
         WORKFLOW_INGEST_FUNCTION_MAP[WORKFLOW_PHENOPACKETS_JSON](
-            self.phenopacket, self.t2.identifier)
+            EXAMPLE_INGEST_OUTPUTS_PHENOPACKETS_JSON_2, self.t2.identifier)
 
     def test_get_phenopackets(self):
         """

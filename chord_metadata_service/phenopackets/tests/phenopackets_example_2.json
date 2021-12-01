@@ -1,72 +1,18 @@
 {
-    "id": "0bb2acbd-13ff-49ee-8059-966906c255dc",
+    "id": "ae8fbf37-2029-4e07-87c2-f3fecb3c1f89",
     "subject": {
-        "id": "ind:HG00107",
-        "date_of_birth": "1995-08-26",
+        "id": "patient:1",
+        "date_of_birth": "1967-01-01",
         "sex": "MALE",
-        "karyotypic_sex": "XY",
-        "taxonomy": {
-            "id": "NCBITaxon:9606",
-            "label": "Homo sapiens"
+        "age": {
+            "age": "P45Y"
+        },
+        "extra_properties": {
+            "education": "Bachelor's Degree"
         }
     },
-    "phenotypic_features": [],
-    "diseases": [],
     "meta_data": {
         "created_by": "David Lougheed",
-        "submitted_by": "Ksenia Zaytseva",
-        "resources": [
-            {
-                "id": "NCBITaxon:2018-07-27",
-                "name": "NCBI Taxonomy OBO Edition",
-                "namespace_prefix": "NCBITaxon",
-                "url": "http://purl.obolibrary.org/obo/ncbitaxon.owl",
-                "version": "2018-07-27",
-                "iri_prefix": "http://purl.obolibrary.org/obo/NCBITaxon_"
-            },
-            {
-                "id": "UBERON:2019-06-27",
-                "name": "Uber-anatomy ontology",
-                "namespace_prefix": "UBERON",
-                "url": "http://purl.obolibrary.org/obo/uberon.owl",
-                "version": "2019-06-27",
-                "iri_prefix": "http://purl.obolibrary.org/obo/UBERON"
-            },
-            {
-                "id": "NCIT:2015-09-01",
-                "name": "NCI Thesaurus",
-                "namespace_prefix": "NCIT",
-                "url": "https://ncit.nci.nih.gov",
-                "version": "2015-09-01",
-                "iri_prefix": "https://ncit.nci.nih.gov"
-            }
-        ],
-        "updates": [],
-        "external_references": []
-    },
-    "biosamples": [
-        {
-            "id": "HG00107",
-            "individual_id": "ind:HG00107",
-            "description": "Biosample for patient HG00107",
-            "sampled_tissue": {
-                "id": "UBERON:0000178",
-                "label": "blood"
-            },
-            "phenotypic_features": [],
-            "individual_age_at_collection": {
-                "age": "P24Y"
-            },
-            "histological_diagnosis": null,
-            "tumor_progression": null,
-            "diagnostic_markers": [],
-            "procedure": {
-                "code": {
-                    "id": "NCIT:C15189",
-                    "label": "Biopsy"
-                }
-            },
-            "is_control_sample": false
-        }
-    ]
+        "submitted_by": "David Lougheed"
+    }
 }
