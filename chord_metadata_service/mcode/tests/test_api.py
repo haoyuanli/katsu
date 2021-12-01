@@ -36,7 +36,7 @@ class McodeApiTest(APITestCase):
         # TODO: Real service ID
         to = TableOwnership.objects.create(table_id=uuid.uuid4(), service_id=uuid.uuid4(), service_artifact="metadata",
                                            dataset=self.d)
-        self.t = Table.objects.create(ownership_record=to, name="Table 1", data_type=DATA_TYPE_PHENOPACKET)
+        self.t = Table.objects.create(ownership_record=to, name="Table 1", data_type=DATA_TYPE_MCODEPACKET)
 
         WORKFLOW_INGEST_FUNCTION_MAP[WORKFLOW_MCODE_JSON](EXAMPLE_INGEST_OUTPUTS_MCODE_JSON, self.t.identifier)
 
