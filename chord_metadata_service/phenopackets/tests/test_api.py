@@ -355,12 +355,21 @@ class GetPhenopacketsApiTest(APITestCase):
 
     def test_get_phenopackets_with_valid_dataset_3(self):
         """
-        Test that we can get 2 phenopacket under both dataset_1 and dataset_2
+        Test that we can get 2 phenopackets under both dataset_1 and dataset_2
         """
         response = self.client.get('/api/phenopackets?datasets=dataset_1,dataset_2')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
         self.assertEqual(len(response_data["results"]), 2)
+
+    def test_get_phenopackets_with_valid_dataset_4(self):
+        """
+        Test that we can get 1 phenopacket under dataset_1 and an invalid dataset
+        """
+        response = self.client.get('/api/phenopackets?datasets=dataset_1,noSuchDataset')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        response_data = response.json()
+        self.assertEqual(len(response_data["results"]), 1)
 
     def test_get_phenopackets_with_invalid_dataset(self):
         """
