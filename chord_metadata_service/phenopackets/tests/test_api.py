@@ -307,7 +307,7 @@ class GetPhenopacketsApiTest(APITestCase):
 
     def setUp(self) -> None:
         """
-
+        Create two datasets and ingest 1 phenopacket into each.
         """
         p = Project.objects.create(title="Project 1", description="")
         self.d = Dataset.objects.create(title="dataset_1", description="Some dataset", data_use=VALID_DATA_USE_1,
