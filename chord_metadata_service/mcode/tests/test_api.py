@@ -26,7 +26,7 @@ class GetMcodeApiTest(APITestCase):
 
     def setUp(self) -> None:
         """
-        Set up one dataset to ingest the mcodepacket example.
+        Set up 1 dataset and ingest 1 mcodepacket.
         """
         p = Project.objects.create(title="Project 1", description="")
         self.d = Dataset.objects.create(title="Dataset 1", description="Some dataset", data_use=VALID_DATA_USE_1,
@@ -39,7 +39,7 @@ class GetMcodeApiTest(APITestCase):
 
     def test_get_mcodepackets(self):
         """
-        Test that we can get a list of mcodepackets without a dataset title
+        Test that we can get 1 mcodepacket without a dataset title.
         """
         response = self.client.get('/api/mcodepackets')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -48,7 +48,7 @@ class GetMcodeApiTest(APITestCase):
 
     def test_get_mcodepackets_with_valid_dataset(self):
         """
-        Test that we can get a list of mcodepackets with valid dataset titles
+        Test that we can get 1 mcodepacket with a valid dataset title.
         """
         response = self.client.get('/api/mcodepackets?datasets=Dataset+1')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -57,7 +57,7 @@ class GetMcodeApiTest(APITestCase):
 
     def test_get_mcodepackets_with_invalid_dataset(self):
         """
-        Test that we cannot get mcodepackets with invalid dataset titles
+        Test that we cannot get mcodepackets with invalid dataset titles.
         """
         response = self.client.get('/api/mcodepackets?datasets=notADataset')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
