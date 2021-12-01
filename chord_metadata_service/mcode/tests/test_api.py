@@ -28,12 +28,17 @@ EXAMPLE_INGEST_OUTPUTS_MCODE_JSON = {
 
 
 class McodeApiTest(APITestCase):
+    """
+    Test that we can retrieve mcodepackets with or without dataset title.
+    """
 
     def setUp(self) -> None:
+        """
+        Set up one dataset to ingest the mcodepacket example. 
+        """
         p = Project.objects.create(title="Project 1", description="")
         self.d = Dataset.objects.create(title="Dataset 1", description="Some dataset", data_use=VALID_DATA_USE_1,
                                         project=p)
-        # TODO: Real service ID
         to = TableOwnership.objects.create(table_id=uuid.uuid4(), service_id=uuid.uuid4(), service_artifact="metadata",
                                            dataset=self.d)
         self.t = Table.objects.create(ownership_record=to, name="Table 1", data_type=DATA_TYPE_MCODEPACKET)
