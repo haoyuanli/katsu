@@ -3,21 +3,16 @@ import os
 import json
 
 from rest_framework import status
-from django.test import APITestCase
+from rest_framework.test import APITestCase
 
 from chord_metadata_service.chord.data_types import DATA_TYPE_PHENOPACKET, DATA_TYPE_MCODEPACKET
 from chord_metadata_service.chord.models import Project, Dataset, TableOwnership, Table
-from chord_metadata_service.patients.models import Individual
 # noinspection PyProtectedMember
 from chord_metadata_service.chord.ingest import (
     WORKFLOW_INGEST_FUNCTION_MAP,
-    WORKFLOW_MCODE_FHIR_JSON,
     WORKFLOW_MCODE_JSON
 )
 from chord_metadata_service.chord.tests.constants import VALID_DATA_USE_1
-
-from ..parse_fhir_mcode import parse_bundle, patient_to_individual
-from ..models import MCodePacket, CancerCondition, MedicationStatement, CancerRelatedProcedure
 
 
 with open(os.path.join(os.path.dirname(__file__), "example_mcode_fhir.json"), "r") as pf:
