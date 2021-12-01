@@ -34,7 +34,7 @@ class McodeApiTest(APITestCase):
 
     def setUp(self) -> None:
         """
-        Set up one dataset to ingest the mcodepacket example. 
+        Set up one dataset to ingest the mcodepacket example.
         """
         p = Project.objects.create(title="Project 1", description="")
         self.d = Dataset.objects.create(title="Dataset 1", description="Some dataset", data_use=VALID_DATA_USE_1,
