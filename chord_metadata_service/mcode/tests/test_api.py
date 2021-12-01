@@ -15,19 +15,12 @@ from chord_metadata_service.chord.ingest import (
 from chord_metadata_service.chord.tests.constants import VALID_DATA_USE_1
 
 
-with open(os.path.join(os.path.dirname(__file__), "example_mcode_fhir.json"), "r") as pf:
-    EXAMPLE_INGEST_MCODE_FHIR = json.load(pf)
-
-EXAMPLE_INGEST_OUTPUTS = {
-    "json_document": os.path.join(os.path.dirname(__file__), "example_mcode_fhir.json"),
-}
-
 EXAMPLE_INGEST_OUTPUTS_MCODE_JSON = {
     "json_document": os.path.join(os.path.dirname(__file__), "example_mcode_json.json"),
 }
 
 
-class McodeApiTest(APITestCase):
+class GetMcodeApiTest(APITestCase):
     """
     Test that we can retrieve mcodepackets with or without dataset title.
     """
