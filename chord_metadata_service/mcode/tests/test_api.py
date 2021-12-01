@@ -31,16 +31,13 @@ class McodeApiTest(APITestCase):
 
     def setUp(self) -> None:
         p = Project.objects.create(title="Project 1", description="")
-        self.d = Dataset.objects.create(title="dataset_1", description="Some dataset", data_use=VALID_DATA_USE_1,
+        self.d = Dataset.objects.create(title="Dataset 1", description="Some dataset", data_use=VALID_DATA_USE_1,
                                         project=p)
-        self.d2 = Dataset.objects.create(title="dataset_2", description="Some dataset", data_use=VALID_DATA_USE_1,
-                                         project=p)
+        # TODO: Real service ID
         to = TableOwnership.objects.create(table_id=uuid.uuid4(), service_id=uuid.uuid4(), service_artifact="metadata",
                                            dataset=self.d)
-        to2 = TableOwnership.objects.create(table_id=uuid.uuid4(), service_id=uuid.uuid4(), service_artifact="metadata",
-                                            dataset=self.d2)
         self.t = Table.objects.create(ownership_record=to, name="Table 1", data_type=DATA_TYPE_MCODEPACKET)
-        self.t2 = Table.objects.create(ownership_record=to2, name="Table 2", data_type=DATA_TYPE_MCODEPACKET)
+
         WORKFLOW_INGEST_FUNCTION_MAP[WORKFLOW_MCODE_JSON](EXAMPLE_INGEST_OUTPUTS_MCODE_JSON, self.t.identifier)
 
     def test_get_mcodepackets(self):
