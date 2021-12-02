@@ -3,10 +3,7 @@ import os
 from django.test import override_settings
 from rest_framework import status
 from rest_framework.test import APITestCase
-from . import constants as c
-from .. import models as m, serializers as s
 
-from chord_metadata_service.restapi.tests.utils import get_response
 from chord_metadata_service.chord.data_types import DATA_TYPE_PHENOPACKET
 from chord_metadata_service.chord.models import Project, Dataset, TableOwnership, Table
 # noinspection PyProtectedMember
@@ -70,7 +67,7 @@ class GetPhenopacketsWithOpaTest(APITestCase):
         self.assertEqual(response.status_code, 403)
 
     @override_settings(CANDIG_AUTHORIZATION='OPA')
-    def test_get_phenopackets_with_invalid_OPA_config(self):
+    def test_get_phenopackets_with_invalid_OPA_config_2(self):
         """
         Test that the /api/datasets returns 200 even if OPA is malconfigured, as this endpoint
         is not covered under the middleware.
@@ -81,7 +78,7 @@ class GetPhenopacketsWithOpaTest(APITestCase):
         self.assertEqual(len(response_data["results"]), 1)
 
     @override_settings(CANDIG_AUTHORIZATION='OPA')
-    def test_get_phenopackets_with_invalid_OPA_config(self):
+    def test_get_phenopackets_with_invalid_OPA_config_3(self):
         """
         Test that the /api/projects returns 200 even if OPA is malconfigured, as this endpoint
         is not covered under the middleware.
@@ -92,7 +89,7 @@ class GetPhenopacketsWithOpaTest(APITestCase):
         self.assertEqual(len(response_data["results"]), 1)
 
     @override_settings(CANDIG_AUTHORIZATION='OPA', CANDIG_OPA_URL='0.0.0.0', CACHE_TIME=0)
-    def test_get_phenopackets_with_invalid_OPA_config(self):
+    def test_get_phenopackets_with_invalid_OPA_config_4(self):
         """
         Test that the server returns 403 for /api/phenopackets if the OPA Server cannot be reached.
         """
