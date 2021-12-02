@@ -396,7 +396,7 @@ class GetPhenopacketsApiTest(APITestCase):
         """
         Test that we can get 1 phenopacket with 1 authorized datasets.
         """
-        response = self.client.get('/api/phenopackets?authorized_datasets=dataset1')
+        response = self.client.get('/api/phenopackets?authorized_datasets=dataset_1')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
         self.assertEqual(len(response_data["results"]), 1)
@@ -405,7 +405,7 @@ class GetPhenopacketsApiTest(APITestCase):
         """
         Test that we can get 2 phenopackets with 2 authorized datasets.
         """
-        response = self.client.get('/api/phenopackets?authorized_datasets=dataset1,dataset2')
+        response = self.client.get('/api/phenopackets?authorized_datasets=dataset_1,dataset_2')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
         self.assertEqual(len(response_data["results"]), 2)
