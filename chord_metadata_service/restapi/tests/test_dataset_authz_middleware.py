@@ -25,7 +25,7 @@ EXAMPLE_INGEST_OUTPUTS_PHENOPACKETS_JSON_2 = {
 class GetPhenopacketsWithOpaTest(APITestCase):
     """
     Test that we can retrieve phenopackets when OPA is not configured, and that we cannot retrieve
-    phenopackets when OPA is not correctly configrued.
+    phenopackets when OPA is not correctly configured.
     """
 
     def setUp(self) -> None:
@@ -69,7 +69,7 @@ class GetPhenopacketsWithOpaTest(APITestCase):
     @override_settings(CANDIG_AUTHORIZATION='OPA')
     def test_get_phenopackets_with_invalid_OPA_config_2(self):
         """
-        Test that the /api/datasets returns 200 with 2 datasets even if OPA is malconfigured, 
+        Test that the /api/datasets returns 200 with 2 datasets even if OPA is malconfigured,
         as this endpoint is not covered under the middleware.
         """
         response = self.client.get('/api/datasets')
@@ -80,7 +80,7 @@ class GetPhenopacketsWithOpaTest(APITestCase):
     @override_settings(CANDIG_AUTHORIZATION='OPA')
     def test_get_phenopackets_with_invalid_OPA_config_3(self):
         """
-        Test that the /api/datasets returns 200 with 1 project even if OPA is malconfigured, 
+        Test that the /api/datasets returns 200 with 1 project even if OPA is malconfigured,
         as this endpoint is not covered under the middleware.
         """
         response = self.client.get('/api/projects')
