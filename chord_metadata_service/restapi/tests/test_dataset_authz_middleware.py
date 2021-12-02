@@ -69,19 +69,19 @@ class GetPhenopacketsWithOpaTest(APITestCase):
     @override_settings(CANDIG_AUTHORIZATION='OPA')
     def test_get_phenopackets_with_invalid_OPA_config_2(self):
         """
-        Test that the /api/datasets returns 200 even if OPA is malconfigured, as this endpoint
-        is not covered under the middleware.
+        Test that the /api/datasets returns 200 with 2 datasets even if OPA is malconfigured, 
+        as this endpoint is not covered under the middleware.
         """
         response = self.client.get('/api/datasets')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
-        self.assertEqual(len(response_data["results"]), 1)
+        self.assertEqual(len(response_data["results"]), 2)
 
     @override_settings(CANDIG_AUTHORIZATION='OPA')
     def test_get_phenopackets_with_invalid_OPA_config_3(self):
         """
-        Test that the /api/projects returns 200 even if OPA is malconfigured, as this endpoint
-        is not covered under the middleware.
+        Test that the /api/datasets returns 200 with 1 project even if OPA is malconfigured, 
+        as this endpoint is not covered under the middleware.
         """
         response = self.client.get('/api/projects')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
